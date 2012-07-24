@@ -33,7 +33,7 @@ add the following to project.clj
 
 #+END_SRC
 
-* TODO
+* Todo
   - needs better exception handling
   - js eval?
   - ast?
