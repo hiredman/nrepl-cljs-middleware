@@ -1,0 +1,40 @@
+#+TITLE: nrepl-cljs-middleware
+
+* What is it?
+
+nrepl middleware for compiling clojurescript
+
+nrepl request with `op` of "compiler-cljs" causes `code` to be
+compiled to javascript, the javascript is returned as the value of
+`javascript`, wraps code in a function, so evaling the value of
+`javascript` in js will always result in a function object, invoke it
+to run your code
+
+use with https://github.com/cemerick/drawbridge/ to get clojurescript
+compiler with http interface
+
+now if only there was an nrepl client for drawbridge written in clojurescript...
+
+* Usage
+
+#+BEGIN_SRC clojure
+;; with drawbridge
+
+(def nrepl-handler (cdb/ring-handler
+                    :nrepl-handler
+                    (-> (clojure.tools.nrepl.server/default-handler)
+                        nrepl.cljs.middleware.compile/compile-cljs)))
+
+#+END_SRC
+
+* TODO
+  - needs better exception handling
+  - js eval?
+  - ast?
+  - nrepl.el integration?
+
+* License
+
+Copyright (C) 2012 Kevin Downey
+
+Distributed under the Eclipse Public License, the same as Clojure.
