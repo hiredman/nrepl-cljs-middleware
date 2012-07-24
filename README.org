@@ -17,6 +17,12 @@ now if only there was an nrepl client for drawbridge written in clojurescript...
 
 * Usage
 
+add the following to project.clj
+
+#+BEGIN_EXAMPLE
+[nrepl-cljs-middleware "0.0.1"]
+#+END_EXAMPLE
+
 #+BEGIN_SRC clojure
 ;; with drawbridge
 
